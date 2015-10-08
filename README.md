@@ -1,2 +1,2 @@
-# python
-Some python scripts for work.
+# Python
+Some Python scripts for work.
