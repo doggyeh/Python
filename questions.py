@@ -8,8 +8,8 @@ target_question = ["In the eighteenth century it was often convenient to regard 
 					"Please check my account balance."]
 
 questions = [
-			# question1
-			 "In the eighteenth century it was often convenient to regard man as a clockwork automaton.",
+             # question1
+             "In the eighteenth century it was often convenient to regard man as a clockwork automaton.",
              "in the eighteenth century    it was often convenient to regard man as a clockwork automaton",
              "In the eighteenth century, it was often convenient to regard man as a clockwork automaton.",
              "In the eighteenth century, it was not accepted to regard man as a clockwork automaton.",
