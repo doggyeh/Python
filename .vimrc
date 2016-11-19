@@ -21,8 +21,10 @@ set softtabstop=2
 set smarttab
 set expandtab
 set fileformat=unix
-set statusline+=%F
 set laststatus=2
+set statusline=%<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
+set relativenumber
+set scrolloff=10
 syntax on
 set nocompatible
 filetype off
@@ -34,6 +36,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'terryma/vim-smooth-scroll'
 Bundle 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
@@ -43,3 +46,13 @@ vmap <C-c> :w! ~/.vimbuffer<CR>
 nmap <C-c> :.w! ~/.vimbuffer<CR>
 " paste from buffer
 map <C-v> :r ~/.vimbuffer<CR>
+
+"Fuzzy Finder
+set rtp+=~/.fzf
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+set mouse=a
