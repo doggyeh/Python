@@ -10,9 +10,7 @@ set hlsearch
 set autoindent
 set ruler
 set showmode
-set showmode
 set showmatch
-set background=dark
 set backspace=2
 set cursorline!
 set tabstop=2
@@ -25,7 +23,13 @@ set laststatus=2
 set statusline=%<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
 set relativenumber
 set scrolloff=10
+autocmd FileType sh,zsh,python,perl,ruby match ErrorMsg '\%>80v.\+'
+execute pathogen#infect()
 syntax on
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 set nocompatible
 filetype off
 
@@ -34,7 +38,6 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'gmarik/Vundle.vim'
 Plugin 'terryma/vim-smooth-scroll'
 Bundle 'Valloric/YouCompleteMe'
@@ -55,4 +58,14 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-set mouse=a
+set mouse=n
+autocmd FileType c,cpp,java,verilog noremap <silent>. :s:^\(\s*\):\1// :<CR>:noh<CR>
+autocmd FileType c,cpp,java,verilog noremap <silent>, :s:^\(\s*\)// :\1:<CR>:noh<CR>
+autocmd FileType sh,zsh,python,perl,ruby noremap <silent>. :s:^\(\s*\):\1# :<CR>:noh<CR>
+autocmd FileType sh,zsh,python,perl,ruby noremap <silent>, :s:^\(\s*\)# :\1:<CR>:noh<CR>
+autocmd FileType vim noremap <silent>. :s:^\(\s*\):\1" :<CR>:noh<CR>
+autocmd FileType vim noremap <silent>, :s:^\(\s*\)" :\1:<CR>:noh<CR>
+autocmd FileType asm noremap <silent>. :s:^\(\s*\):\1; :<CR>:noh<CR>
+autocmd FileType asm noremap <silent>, :s:^\(\s*\); :\1:<CR>:noh<CR>
+autocmd FileType vhdl,sql noremap <silent>. :s:^\(\s*\):\1-- :<CR>:noh<CR>
+autocmd FileType vhdl,sql noremap <silent>, :s:^\(\s*\)-- :\1:<CR>:noh<CR>
